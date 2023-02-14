@@ -1,35 +1,40 @@
-const lastOp = [{ operation: "default", result: "default" }];
+const currentOp = document.getElementById("currentOperation");
+const currentResult = document.getElementById("currentResult");
+const last = document.getElementById("lastOperation");
+const lastResult = document.getElementById("lastResult");
+const history = [];
+const operators = ["+", "-", "/", "*"];
 let opString = "";
-const operators = ["+", "-", "/", "*", "(", ")"];
 let clicked = 0;
 let result = "";
 
 const createString = (val) => {
-    //  clicked ? (result, clicked=0)
-    // (result, clicked = 0, console.log(":"+opString), createString(val))
     switch (clicked) {
         case 1:
             opString = result;
             clicked = 0;
-            console.log(": "+clicked);
-            console.log(": "+opString);
             break;
         case 0:
-            opString = !opString && operators.includes(val) ? (displayError(1), opString) : opString.charAt(-1) === val ? (displayError(2), opString) : opString.concat(val);
+            opString = !opString && operators.includes(val) ? (displayError(1), opString) : operators.includes(val) && operators.includes(opString.slice(-1)) ? (displayError(2), opString) : val === "pow" && result ? Math.pow(result, 2) : opString.concat(val);
         default:
             break;
     }
-    console.log(opString);
+    updateUi();
 };
 
 const deleteString = (val) => {
-    console.log(val);
+    opString = val ? "" : opString.slice(0, -1);
+    updateUi();
 };
 
 const getResult = (val) => {
-    result = eval(opString);
+    result = eval(opString).toString();
     clicked = 1;
-    console.log(result);
+    history.push({
+        operation: opString,
+        result: result,
+    });
+    updateUi();
 };
 
 const displayError = (val) => {
@@ -42,4 +47,12 @@ const displayError = (val) => {
         default:
             break;
     }
+};
+
+const updateUi = () => {
+    currentOp.innerHTML = opString || "0";
+    currentResult.innerHTML = result || "0";
+    const lastOperation = history.slice(-1)[0];
+    last.innerHTML = lastOperation?.operation || "Nothing to Show";
+    lastResult.innerHTML = lastOperation?.result || "0";
 };
