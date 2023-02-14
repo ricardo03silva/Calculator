@@ -18,20 +18,20 @@
                 <div class="d-flex justify-content-start align-items-center">
                     <span class="material-symbols-outlined"> history </span>
                 </div>
-                <div class="d-flex flex-fill">
-                    <span id="lastOperation" class="fs-1">Nothing to Show</span>
+                <div class="d-flex flex-fill scroll">
+                    <span id="lastOperation" class="fs-1 item">Nothing</span>
                 </div>
-                <div class="d-flex justify-content-end">
-                    <span id="lastResult" class="fs-1">0</span>
+                <div class="d-flex justify-content-end scroll">
+                    <span id="lastResult" class="fs-1 item">0</span>
                 </div>
             </div>
             <!--Result-->
             <div class="container border my-2 pt-2 pb-1 border-light rounded-3">
-                <div class="d-flex flex-row">
-                    <span id="currentOperation" class="fs-1">0</span>
+                <div class="d-flex flex-row scroll">
+                    <span id="currentOperation" class="fs-1 item">0</span>
                 </div>
-                <div class="d-flex flex-row-reverse">
-                    <span id="currentResult" class="fs-1">0</span>
+                <div class="d-flex flex-row-reverse scroll">
+                    <span id="currentResult" class="fs-1 item">0</span>
                 </div>
             </div>
             <div class="container border my-2 py-1 border-light rounded-3">
@@ -48,7 +48,7 @@
                         </button>
                     </div>
                     <div class="col">
-                        <button type="button" class="btn btn-secondary btn-lg h-100 w-100" onclick="createString('pow')">
+                        <button type="button" class="btn btn-secondary btn-lg h-100 w-100" onclick="createString('sqr')">
                             <span class="material-symbols-outlined align-middle"> superscript </span>
                         </button>
                     </div>

@@ -1,0 +1,17 @@
+/* 
+scroll
+    item 
+*/
+
+.scroll {
+    width: 100%;
+    height: fit-content;
+    white-space: nowrap;    
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.item {
+    display: inline-block;
+}
